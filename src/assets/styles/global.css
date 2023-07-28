@@ -1,0 +1,22 @@
+@import "./variables.css";
+@import "./reset.css";
+
+html {
+  background-color: var(--color-bg-primary-100);
+}
+
+h1 {
+  color: var(--color-neutral-100);
+}
+
+button {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-100);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+p {
+  color: var(--color-neutral-100);
+}

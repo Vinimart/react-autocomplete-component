@@ -1,10 +1,10 @@
-import { Button } from '../../components/atoms';
+import { Autocomplete } from '../../components/organisms';
+import style from './home.module.css';
 
 function Home() {
   return (
-    <main>
-      <h1>Home</h1>
-      <Button>Button</Button>
+    <main className={style["home"]}>
+      <Autocomplete />
     </main>
   );
 }

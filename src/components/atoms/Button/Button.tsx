@@ -1,11 +1,18 @@
-import { memo } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 
-export interface ButtonProps {
+import styles from './button.module.css';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
+  className?: string;
 }
 
-function Button({ children, ...props }: ButtonProps) {
-  return <button {...props}>{children}</button>;
-}
+const Button: FC<ButtonProps> = ({ children, className, ...props }) => {
+  return (
+    <button className={`${styles.button} ${className}`} {...props}>
+      {children}
+    </button>
+  );
+};
 
-export default memo(Button);
+export default Button;

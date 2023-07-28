@@ -1,0 +1,57 @@
+@import "./variables.css";
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+code,
+em,
+img,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+u,
+strike,
+del,
+ins,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--color-neutral-400);
+  background-color: var(--color-neutral-100);
+}
