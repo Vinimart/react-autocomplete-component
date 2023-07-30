@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, InputHTMLAttributes, useState } from 'react';
+import React, { ChangeEvent, FC, InputHTMLAttributes, memo, useCallback, useState } from 'react';
 
 import { Button } from '../../atoms';
 import style from './input.module.css';
@@ -11,20 +11,21 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input: FC<InputProps> = ({ value = "", icon, onChange, ...rest }) => {
   const [inputValue, setInputValue] = useState<string>(value as string);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    setInputValue(newValue);
-    if (onChange) {
-      onChange(event);
-    }
-  };
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setInputValue(event?.target?.value);
+      if (onChange) onChange(event);
+    },
+    [onChange]
+  );
 
-  const handleClearClick = () => {
+  const handleClear = useCallback(() => {
     setInputValue("");
+
     if (onChange) {
-      onChange({} as ChangeEvent<HTMLInputElement>);
+      onChange({ target: { value: "" } } as ChangeEvent<HTMLInputElement>);
     }
-  };
+  }, [onChange]);
 
   return (
     <div className={style["input-wrapper"]}>
@@ -41,10 +42,8 @@ const Input: FC<InputProps> = ({ value = "", icon, onChange, ...rest }) => {
       />
 
       {inputValue && (
-        <div
-          className={style["clear"]}
-        >
-          <Button type="button" onClick={handleClearClick}>
+        <div className={style["clear"]}>
+          <Button type="button" onClick={handleClear}>
             <i className="fa-solid fa-xmark" />
           </Button>
         </div>
@@ -53,4 +52,4 @@ const Input: FC<InputProps> = ({ value = "", icon, onChange, ...rest }) => {
   );
 };
 
-export default Input;
+export default memo(Input);

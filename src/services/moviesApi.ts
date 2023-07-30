@@ -1,46 +1,43 @@
-interface ApiResponse {
-  elapse: number;
-  results: MovieData[];
+export interface MoviesAPIResponse {
+  Search: Movie[];
+  totalResults: string;
 }
 
-interface MovieData {
-  avgrating: number;
-  clist: string;
-  id: number;
-  imdbid: string;
-  imdbrating: number;
-  img: string;
-  nfid: number;
-  poster: string;
-  runtime: number;
-  synopsis: string;
-  title: string;
-  titledate: string;
-  top250: number;
-  top250tv: number;
-  vtype: string;
-  year: number;
+export interface Movie {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
 }
 
-const DEF_QUERY = `start_year=1972&orderby=rating&audiosubtitle_andor=and&limit=100&subtitle=english&countrylist=78%2C46&audio=english&country_andorunique=unique&offset=0&end_year=2019`;
+export interface FetchResponse {
+  results: Movie[];
+  total: number;
+}
 
-export const fetchMoviesData = async (query?: string): Promise<ApiResponse> => {
-  const url = `https://unogsng.p.rapidapi.com/search?${query ?? DEF_QUERY}`;
+export const fetchMoviesData = async (
+  query?: string
+): Promise<FetchResponse> => {
+  const url = `https://movie-database-alternative.p.rapidapi.com/?s=${query}&r=json&page=1`;
 
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY as string,
-      "X-RapidAPI-Host": "unogsng.p.rapidapi.com",
+      "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
+      "X-RapidAPI-Host": "movie-database-alternative.p.rapidapi.com",
     },
   };
 
   try {
     const response = await fetch(url, options);
-    const data = await response.json();
-    return data as ApiResponse;
+    const data: MoviesAPIResponse = await response.json();
+
+    return {
+      results: data?.Search,
+      total: Number(data?.totalResults) || 0,
+    };
   } catch (error) {
-    console.error("Error fetching movies data:", error);
-    return { elapse: 0, results: [] };
+    throw new Error(error as string);
   }
 };

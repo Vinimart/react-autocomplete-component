@@ -1,20 +1,34 @@
 .autocomplete {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  height: 600px;
+  max-width: 900px;
+  width: 95%;
   border-radius: 7.5px;
   background-color: var(--color-bg-secondary-150);
+  z-index: 10;
+  margin-top: 100px;
 }
 
 .autocomplete .header {
-   padding: 18px;
+  padding: 18px;
 }
 
 .autocomplete .content {
-    border-top: 1px solid var(--color-neutral-350);
+  border-top: 1px solid var(--color-neutral-350);
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.autocomplete .content.loading {
+  overflow-y: hidden;
+}
+
+.autocomplete .content .loader-wrapper {
+  height: 500px;
+  overflow-y: hidden;
+}
+
+.autocomplete .content .loader-wrapper.hidden {
+  display: none;
 }
 
 @media (max-width: var(--mobile-max)) {

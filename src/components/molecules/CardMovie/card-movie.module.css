@@ -1,0 +1,59 @@
+.card-movie {
+  border: 1px solid var(--color-neutral-350);
+  padding: 8px;
+  display: flex;
+  align-items: start;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.card-movie .poster-wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 60px;
+  max-height: 80px;
+}
+
+.card-movie .poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-movie .info {
+  padding: 5px 0 5px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.card-movie .info .title {
+  color: var(--color-neutral-100);
+  font-size: 20px;
+  font-weight: bold;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-movie .info .year,
+.card-movie .info .type {
+  font-size: 14px;
+  color: var(--color-neutral-300);
+  text-transform: capitalize;
+}
+
+.card-movie .info .imdb {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-neutral-200);
+  text-decoration: none;
+}
+
+.card-movie .info .imdb:hover {
+  filter: brightness(2);
+}

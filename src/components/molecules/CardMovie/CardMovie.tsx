@@ -1,0 +1,49 @@
+import { memo } from 'react';
+
+import { imagePlaceholder } from '../../../utils';
+import style from './card-movie.module.css';
+
+export interface CardMovieProps {
+  key: string;
+  id: string;
+  title: string;
+  type: string;
+  year: string;
+  poster: string;
+}
+
+function CardMovie({ key, id, title, type, year, poster }: CardMovieProps) {
+  return (
+    <div key={key} className={style["card-movie"]}>
+      <div className={style["poster-wrapper"]}>
+        <img
+          className={style["poster"]}
+          src={poster}
+          alt={title}
+          onErrorCapture={imagePlaceholder}
+        />
+      </div>
+
+      <div className={style["info"]}>
+        <h3 className={style["title"]}>{title}</h3>
+
+        <div>
+          <span className={style["year"]}>{year} - </span>
+          <span className={style["type"]}>{type}</span>
+        </div>
+
+        <a
+          className={style["imdb"]}
+          href={`https://www.imdb.com/title/${id}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="fab fa-imdb fa-lg" />
+          <p>Discover on IMDb</p>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+export default memo(CardMovie);
