@@ -2,7 +2,7 @@
 @import "./reset.css";
 
 html {
-  background-color: var(--color-bg-primary-100);
+  background-image: linear-gradient(to bottom, #20292f, #2b353f);
 }
 
 h1 {

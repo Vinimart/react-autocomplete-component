@@ -8,6 +8,8 @@ function Home() {
       <AutocompleteProvider>
         <Autocomplete />
       </AutocompleteProvider>
+
+      <div className={style["footer"]} />
     </main>
   );
 }

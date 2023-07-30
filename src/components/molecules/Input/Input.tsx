@@ -1,19 +1,14 @@
 import React, { ChangeEvent, FC, InputHTMLAttributes, useState } from 'react';
 
 import { Button } from '../../atoms';
+import style from './input.module.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   icon?: React.ReactNode;
 }
 
-const Input: FC<InputProps> = ({
-  value = "",
-  label,
-  icon,
-  onChange,
-  ...rest
-}) => {
+const Input: FC<InputProps> = ({ value = "", icon, onChange, ...rest }) => {
   const [inputValue, setInputValue] = useState<string>(value as string);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -32,45 +27,28 @@ const Input: FC<InputProps> = ({
   };
 
   return (
-    <div>
-      {label && <label>{label}</label>}
-      <div style={{ position: "relative" }}>
-        {icon && (
-          <div
-            style={{
-              position: "absolute",
-              left: "8px",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
-            {icon}
-          </div>
-        )}
-        <input
-          {...rest}
-          value={inputValue}
-          onChange={handleChange}
-          style={{
-            paddingLeft: icon ? "30px" : undefined,
-            paddingRight: inputValue ? "30px" : undefined,
-          }}
-        />
-        {inputValue && (
-          <div
-            style={{
-              position: "absolute",
-              right: "8px",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
-            <Button type="button" onClick={handleClearClick}>
-              X
-            </Button>
-          </div>
-        )}
-      </div>
+    <div className={style["input-wrapper"]}>
+      {icon && <div className={style["icon"]}>{icon}</div>}
+
+      <input
+        {...rest}
+        value={inputValue}
+        onChange={handleChange}
+        style={{
+          paddingLeft: icon ? "30px" : undefined,
+          paddingRight: inputValue ? "30px" : undefined,
+        }}
+      />
+
+      {inputValue && (
+        <div
+          className={style["clear"]}
+        >
+          <Button type="button" onClick={handleClearClick}>
+            <i className="fa-solid fa-xmark" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

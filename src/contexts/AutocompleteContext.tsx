@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useContext, useMemo, useState } from "react";
 
 export interface AutocompleteContextProps {
   inputValue: string;
@@ -24,7 +24,7 @@ export const AutocompleteProvider = ({
 
   const value = useMemo(
     () => ({ inputValue, setInputValue, suggestions, setSuggestions }),
-    [inputValue, setInputValue, suggestions, setSuggestions]
+    [inputValue, setInputValue, suggestions, setSuggestions],
   );
 
   return (

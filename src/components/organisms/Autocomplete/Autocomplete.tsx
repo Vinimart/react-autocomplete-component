@@ -6,7 +6,11 @@ import style from './autocomplete.module.css';
 function Autocomplete() {
   return (
     <div className={style["autocomplete"]}>
-      <Input />
+      <div className={style["header"]}>
+        <Input icon={<i className="fa-solid fa-magnifying-glass" />} />
+      </div>
+
+      <div className={style["content"]}></div>
     </div>
   );
 }

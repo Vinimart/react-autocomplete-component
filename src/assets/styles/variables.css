@@ -2,9 +2,16 @@
   --color-neutral-100: #ffffff;
   --color-neutral-200: #f8f8f8;
   --color-neutral-300: #888888;
+  --color-neutral-350: #8888887a;
   --color-neutral-400: #333333;
   --color-neutral-500: #000000;
 
   --color-bg-primary-100: #20292f;
-  --color-bg-secondary-100: #353f46;
+  --color-bg-secondary-100: #384248;
+  --color-bg-secondary-150: #353f467e;
+
+  --mobile-max: 767px;
+  --tablet-min: 768px;
+  --small-desktop-min: 992px;
+  --large-desktop-min: 1200px;
 }

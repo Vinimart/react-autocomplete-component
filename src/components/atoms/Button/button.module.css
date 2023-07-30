@@ -1,0 +1,19 @@
+.button {
+  width: 100%;
+  font-size: 16px;
+  color: var(--color-neutral-200);
+  background-color: var(--color-bg-secondary-150);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  filter: brightness(0.5);
+}
+
+.button:not(:disabled):hover {
+  filter: brightness(1.2);
+}
