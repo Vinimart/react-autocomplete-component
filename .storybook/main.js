@@ -15,11 +15,27 @@ module.exports = {
   docs: {
     autodocs: true,
   },
+  // webpackFinal: async (config) => {
+  //   config.module.rules.push({
+  //     test: /\.css$/,
+  //     use: ["style-loader", "css-loader"],
+  //   });
+  //   return config;
+  // },
+
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.css$/,
-      use: ["style-loader", "css-loader"],
+    const customConfig = { ...config };
+
+    customConfig.module.rules.push({
+      test: /\.tsx?$/,
+      use: "ts-loader",
+      exclude: /node_modules/,
     });
-    return config;
+
+    customConfig.resolve.extensionAlias = {
+      ".js": [".tsx", ".ts", ".js"],
+    };
+
+    return customConfig;
   },
 };
