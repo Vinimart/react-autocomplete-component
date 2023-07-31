@@ -1,27 +1,93 @@
-# React + TypeScript + Vite
+# Deel Autocomplete Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a React project built using Vite. It includes an Autocomplete component that allows users to search for movies and get suggestions as they type.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run this project locally, follow these steps:
 
-## Expanding the ESLint configuration
+1. Clone the private repository to your local machine (**If you have the zip file, you can skip this step**):
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+git clone https://github.com/Vinimart/deel-autocomplete-assessment.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Navigate to the project directory:
+
+```bash
+cd deel-autocomplete-assessment
+```
+
+3. Install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+4. Start the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+DONE! The project will now be available at `http://localhost:3000`, and you can view it in your web browser.
+
+## Building the Project
+
+To build the project for production, run the following command:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+This will create a production-ready build in the `dist` directory.
+
+## Running unit/component Tests
+
+### Unit Tests
+
+To run unit tests, use the following command:
+
+```bash
+npm test:unit
+# or
+yarn test:unit
+```
+
+### End-to-End (E2E) Tests
+
+To run end-to-end tests using Cypress, execute the following command:
+
+```bash
+npm run test:e2e
+# or
+yarn test:e2e
+```
+
+Cypress will open and run the E2E tests in your default browser.
+
+## Storybook (UI Components Showcase & Documentation)
+
+This project uses Storybook to showcase UI components. To run Storybook, use the following command:
+
+```bash
+npm run storybook
+# or
+yarn storybook
+```
+
+You may need storybook CLI installed globally. If so, run the following command:
+
+```bash
+npm install -g @storybook/cli
+# or
+yarn global add @storybook/cli
+```
+
+This will start the Storybook development server, and you can view the UI components at `http://localhost:6006`.
