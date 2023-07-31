@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const useDebounce = (
   callback: (...args: any) => void,
-  delay: number
+  delay: number,
 ) => {
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
 

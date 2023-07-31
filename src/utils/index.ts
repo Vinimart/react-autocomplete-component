@@ -1,3 +1,3 @@
-import imagePlaceholder from './imagePlaceholder';
+import imagePlaceholder from "./imagePlaceholder";
 
 export { imagePlaceholder };

@@ -17,7 +17,7 @@ export interface FetchResponse {
 }
 
 export const fetchMoviesData = async (
-  query?: string
+  query?: string,
 ): Promise<FetchResponse> => {
   const url = `https://movie-database-alternative.p.rapidapi.com/?s=${query}&r=json&page=1`;
 

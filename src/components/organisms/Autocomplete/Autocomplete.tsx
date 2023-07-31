@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useCallback } from 'react';
+import { ChangeEvent, memo, useCallback, useState } from 'react';
 
 import { useAutocompleteContext } from '../../../contexts';
 import { useCache, useDebounce } from '../../../hooks';
@@ -8,26 +8,27 @@ import { CardMovie, Input } from '../../molecules';
 import style from './autocomplete.module.css';
 
 import type { MoviesAPIResponse } from "../../../services/moviesApi";
+
 function Autocomplete() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const { getFromCache, setToCache } = useCache<string[]>();
 
-  const {
-    inputValue,
-    suggestions,
-    isLoading,
-    setIsLoading,
-    setInputValue,
-    setSuggestions,
-  } = useAutocompleteContext();
+  const { inputValue, suggestions, setInputValue, setSuggestions } =
+    useAutocompleteContext();
 
   const debouncedAPICall = useDebounce(async (search: string) => {
+    setIsLoading(true);
     setInputValue(search);
 
     const cachedSuggestions = getFromCache(
       search
     ) as unknown as MoviesAPIResponse["Search"];
 
-    if (cachedSuggestions) return setSuggestions(cachedSuggestions);
+    if (cachedSuggestions) {
+      setIsLoading(false);
+      return setSuggestions(cachedSuggestions);
+    }
 
     try {
       const { results } = await fetchMoviesData(search);
@@ -36,13 +37,13 @@ function Autocomplete() {
       setToCache(search, results);
     } catch (error) {
       throw new Error(error as string);
+    } finally {
+      setIsLoading(false);
     }
   }, 500);
 
   const handleInputChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setIsLoading(true);
-
+    async (event: ChangeEvent<HTMLInputElement>) => {
       const { value: search } = event.target;
 
       if (!search) {
@@ -51,8 +52,6 @@ function Autocomplete() {
       }
 
       debouncedAPICall(search);
-
-      setIsLoading(false);
     },
     [debouncedAPICall, setIsLoading, setSuggestions]
   );
@@ -75,19 +74,17 @@ function Autocomplete() {
         >
           <Loader isLoading={isLoading} />
         </div>
-
         {suggestions?.map(({ imdbID, Title, Type, Year, Poster }) => (
           <CardMovie
-            {...{
-              key: imdbID,
-              id: imdbID,
-              title: Title,
-              type: Type,
-              year: Year,
-              poster: Poster,
-            }}
+            key={imdbID}
+            id={imdbID}
+            title={Title}
+            type={Type}
+            year={Year}
+            poster={Poster}
           />
         ))}
+        tle
       </div>
     </div>
   );

@@ -1,0 +1,15 @@
+@import "../../../assets/styles/animations.css";
+
+.loader {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.loader i {
+  position: relative;
+  top: 30%;
+  color: var(--color-neutral-300);
+  animation: spinner 1.5s linear infinite;
+}

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export function useCache<T>() {
   const [cache, setCache] = useState<{ [key: string]: T }>(() => {
