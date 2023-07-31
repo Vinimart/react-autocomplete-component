@@ -2,6 +2,8 @@
 
 This repository contains a React project built using Vite. It includes an Autocomplete component that allows users to search for movies and get suggestions as they type.
 
+**Assessment Questions** are available [here](./questions.md).
+
 ## Getting Started
 
 To run this project locally, follow these steps:
@@ -58,9 +60,9 @@ This will create a production-ready build in the `dist` directory.
 To run unit tests, use the following command:
 
 ```bash
-npm test:unit
+npm test
 # or
-yarn test:unit
+yarn test
 ```
 
 ## Storybook (UI Components Showcase & Documentation)
