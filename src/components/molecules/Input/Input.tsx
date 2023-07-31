@@ -3,8 +3,7 @@ import React, { ChangeEvent, FC, InputHTMLAttributes, memo, useCallback, useStat
 import { Button } from '../../atoms';
 import style from './input.module.css';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
 }
 

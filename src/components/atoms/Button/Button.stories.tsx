@@ -1,10 +1,29 @@
-import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
+import './button.module.css';
 
-import Button from './Button';
+import { Meta, StoryFn } from '@storybook/react';
 
-storiesOf("Button", module)
-  .add("Default", () => <Button onClick={action("clicked")}>Click Me</Button>)
-  .add("With className", () => (
-    <Button className="my-custom-class">Click Me</Button>
-  ));
+import Button, { ButtonProps } from './Button';
+
+export default {
+  title: "Atoms/Button",
+  component: Button,
+  argTypes: {
+    onClick: { action: "clicked" },
+    backgroundColor: { control: "color" },
+  },
+} as Meta<typeof Button>;
+
+const Template: StoryFn<typeof Button> = (args: ButtonProps) => (
+  <Button {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  children: "Button",
+};
+
+export const CustomClass = Template.bind({});
+CustomClass.args = {
+  children: "Button",
+  className: "custom-button",
+};
