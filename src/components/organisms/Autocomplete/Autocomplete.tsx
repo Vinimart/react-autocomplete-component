@@ -59,10 +59,11 @@ function Autocomplete() {
   );
 
   return (
-    <div className={style["autocomplete"]}>
+    <div className={style["autocomplete"]} data-testid="autocomplete">
       <div className={style["header"]}>
         <Input
           value={inputValue}
+          placeholder="Search for a movie or series"
           icon={<i className="fa-solid fa-magnifying-glass" />}
           onChange={handleInputChange}
         />
@@ -78,7 +79,7 @@ function Autocomplete() {
             !isLoading && style["hidden"]
           }`}
         >
-          <Loader isLoading={isLoading} />
+          <Loader isLoading={isLoading} data-testid="loader" />
         </div>
 
         {suggestions?.map(({ imdbID, Title, Type, Year, Poster }) => (
@@ -89,11 +90,12 @@ function Autocomplete() {
             type={Type}
             year={Year}
             poster={Poster}
+            data-testid="card-movie"
           />
         ))}
 
         {inputValue && !suggestions?.length ? (
-          <div className={style["empty"]}>
+          <div className={style["empty"]} data-testid="empty">
             <i className="fa-solid fa-circle-info" />
             <h3 className={style["title"]}>No results found</h3>
           </div>

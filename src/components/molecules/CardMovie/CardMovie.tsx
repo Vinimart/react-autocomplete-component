@@ -17,10 +17,11 @@ function CardMovie({ id, title, type, year, poster }: CardMovieProps) {
   const { inputValue } = useAutocompleteContext();
 
   return (
-    <div className={style["card-movie"]}>
+    <div className={style["card-movie"]} data-testid="card-movie">
       <div className={style["poster-wrapper"]}>
         <img
           className={style["poster"]}
+          data-testid="poster"
           src={poster}
           alt={title}
           onErrorCapture={imagePlaceholder}
@@ -28,7 +29,7 @@ function CardMovie({ id, title, type, year, poster }: CardMovieProps) {
       </div>
 
       <div className={style["info"]}>
-        <h3 className={style["title"]}>
+        <h3 className={style["title"]} data-testid="title">
           <Highligh
             inputValue={inputValue}
             text={title}

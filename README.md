@@ -18,6 +18,9 @@ git clone https://github.com/Vinimart/deel-autocomplete-assessment.git
 cd deel-autocomplete-assessment
 ```
 
+Important: Make sure you have **Node.js** installed, preferably LTS version. If not, you can download it [here](https://nodejs.org/en/download/).
+Also make sure you have a package manager installed. This project uses yarn, but you can use npm if you prefer.
+
 3. Install the dependencies:
 
 ```bash
@@ -59,18 +62,6 @@ npm test:unit
 # or
 yarn test:unit
 ```
-
-### End-to-End (E2E) Tests
-
-To run end-to-end tests using Cypress, execute the following command:
-
-```bash
-npm run test:e2e
-# or
-yarn test:e2e
-```
-
-Cypress will open and run the E2E tests in your default browser.
 
 ## Storybook (UI Components Showcase & Documentation)
 
