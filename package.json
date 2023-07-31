@@ -1,7 +1,7 @@
 {
   "name": "deel-autocomplete-assessment",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,8 +11,9 @@
     "test": "vitest --run",
     "test:watch": "vitest --watch",
     "type-check": "tsc --noEmit",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier ./src/**/*.{ts,tsx} --write",
-    "pre-commit": "yarn format && yarn type-check && yarn test"
+    "pre-commit": "yarn format && yarn type-check && yarn lint && yarn test"
   },
   "dependencies": {
     "react": "^18.2.0",

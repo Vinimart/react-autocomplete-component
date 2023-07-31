@@ -10,6 +10,15 @@ export function useCache<T>() {
 
   const getFromCache = (key: string): T | undefined => cache[key];
 
+  const getCacheKeys = (): string[] => Object.keys(cache);
+
+  const getLastCache = (): T | undefined => {
+    const keys = getCacheKeys();
+    const lastKey = keys[keys.length - 1];
+
+    return getFromCache(lastKey);
+  };
+
   const setToCache = (key: string, value: any) => {
     setCache((prevCache) => {
       const newCache = { ...prevCache, [key]: value };
@@ -24,5 +33,12 @@ export function useCache<T>() {
     sessionStorage.removeItem("cachedData");
   };
 
-  return { cache, getFromCache, setToCache, clearCache };
+  return {
+    cache,
+    clearCache,
+    getCacheKeys,
+    getFromCache,
+    getLastCache,
+    setToCache,
+  };
 }

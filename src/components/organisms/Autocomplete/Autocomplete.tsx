@@ -13,10 +13,22 @@ const DEBOUNCE_TIME_MS = 500;
 
 function Autocomplete() {
   const [isLoading, setIsLoading] = useState(false);
-  const { getFromCache, setToCache } = useCache<string[]>();
+  const { getFromCache, setToCache, getLastCache } = useCache<string[]>();
 
   const { inputValue, suggestions, setInputValue, setSuggestions } =
     useAutocompleteContext();
+
+  const filterSuggestions = useCallback(
+    (search: string, cachedSuggestions: MoviesAPIResponse["Search"]) => {
+      const filteredSuggestions = cachedSuggestions.filter(
+        ({ Title }: { Title: string }) =>
+          Title.toLowerCase().includes(search.toLowerCase())
+      );
+
+      setSuggestions(filteredSuggestions);
+    },
+    [setSuggestions]
+  );
 
   const debouncedAPICall = useDebounce(async (search: string) => {
     setIsLoading(true);
@@ -33,6 +45,13 @@ function Autocomplete() {
 
     try {
       const { results } = await fetchMoviesData(search);
+
+      if (!results?.length) {
+        return filterSuggestions(
+          search,
+          getLastCache() as unknown as MoviesAPIResponse["Search"]
+        );
+      }
 
       setSuggestions(results);
       setToCache(search, results);
