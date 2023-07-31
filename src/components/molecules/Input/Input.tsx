@@ -28,13 +28,18 @@ const Input: FC<InputProps> = ({ value = "", icon, onChange, ...rest }) => {
   }, [onChange]);
 
   return (
-    <div className={style["input-wrapper"]}>
-      {icon && <div className={style["icon"]}>{icon}</div>}
+    <div className={style["input-wrapper"]} data-testid="input-wrapper">
+      {icon && (
+        <div className={style["icon"]} data-testid="icon">
+          {icon}
+        </div>
+      )}
 
       <input
         {...rest}
         value={inputValue}
         onChange={handleChange}
+        data-testid="input"
         style={{
           paddingLeft: icon ? "30px" : undefined,
           paddingRight: inputValue ? "30px" : undefined,
@@ -43,7 +48,7 @@ const Input: FC<InputProps> = ({ value = "", icon, onChange, ...rest }) => {
 
       {inputValue && (
         <div className={style["clear"]}>
-          <Button type="button" onClick={handleClear}>
+          <Button type="button" onClick={handleClear} data-testid="clear">
             <i className="fa-solid fa-xmark" />
           </Button>
         </div>

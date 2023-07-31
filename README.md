@@ -18,6 +18,9 @@ git clone https://github.com/Vinimart/deel-autocomplete-assessment.git
 cd deel-autocomplete-assessment
 ```
 
+Important: Make sure you have **Node.js** installed, preferably LTS version. If not, you can download it [here](https://nodejs.org/en/download/).
+Also make sure you have a package manager installed. This project uses yarn, but you can use npm if you prefer.
+
 3. Install the dependencies:
 
 ```bash

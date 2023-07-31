@@ -2,6 +2,12 @@ import { createContext, useContext, useMemo, useState } from "react";
 
 import type { MoviesAPIResponse } from "../services/moviesApi";
 
+export interface AutocompleteContextDefProps {
+  children: React.ReactNode;
+  defInputValue?: string;
+  defSuggestions?: MoviesAPIResponse["Search"];
+}
+
 export interface AutocompleteContextProps {
   inputValue: string;
   suggestions: MoviesAPIResponse["Search"];
@@ -18,12 +24,12 @@ const AutocompleteContext = createContext<AutocompleteContextProps>({
 
 export const AutocompleteProvider = ({
   children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [inputValue, setInputValue] = useState("");
+  defSuggestions,
+  defInputValue,
+}: AutocompleteContextDefProps) => {
+  const [inputValue, setInputValue] = useState(defInputValue ?? "");
   const [suggestions, setSuggestions] = useState<MoviesAPIResponse["Search"]>(
-    [],
+    defSuggestions ?? [],
   );
 
   const value = useMemo(
