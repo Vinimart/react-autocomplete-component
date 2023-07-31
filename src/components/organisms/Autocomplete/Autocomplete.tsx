@@ -9,9 +9,10 @@ import style from './autocomplete.module.css';
 
 import type { MoviesAPIResponse } from "../../../services/moviesApi";
 
+const DEBOUNCE_TIME_MS = 500;
+
 function Autocomplete() {
   const [isLoading, setIsLoading] = useState(false);
-
   const { getFromCache, setToCache } = useCache<string[]>();
 
   const { inputValue, suggestions, setInputValue, setSuggestions } =
@@ -40,18 +41,19 @@ function Autocomplete() {
     } finally {
       setIsLoading(false);
     }
-  }, 500);
+  }, DEBOUNCE_TIME_MS);
 
   const handleInputChange = useCallback(
     async (event: ChangeEvent<HTMLInputElement>) => {
       const { value: search } = event.target;
+      const trimmedSearch = search.trim();
 
-      if (!search) {
+      if (!trimmedSearch) {
         setIsLoading(false);
         return setSuggestions([]);
       }
 
-      debouncedAPICall(search);
+      if (trimmedSearch?.length >= 3) debouncedAPICall(trimmedSearch);
     },
     [debouncedAPICall, setIsLoading, setSuggestions]
   );
@@ -66,7 +68,11 @@ function Autocomplete() {
         />
       </div>
 
-      <div className={`${style["content"]} ${isLoading && style["loading"]}`}>
+      <div
+        className={`${style["content"]} ${isLoading && style["loading"]} ${
+          !inputValue && style["hidden"]
+        }`}
+      >
         <div
           className={`${style["loader-wrapper"]} ${
             !isLoading && style["hidden"]
@@ -74,6 +80,7 @@ function Autocomplete() {
         >
           <Loader isLoading={isLoading} />
         </div>
+
         {suggestions?.map(({ imdbID, Title, Type, Year, Poster }) => (
           <CardMovie
             key={imdbID}
@@ -84,7 +91,13 @@ function Autocomplete() {
             poster={Poster}
           />
         ))}
-        tle
+
+        {inputValue && !suggestions?.length ? (
+          <div className={style["empty"]}>
+            <i className="fa-solid fa-circle-info" />
+            <h3 className={style["title"]}>No results found</h3>
+          </div>
+        ) : null}
       </div>
     </div>
   );

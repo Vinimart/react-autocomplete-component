@@ -5,6 +5,8 @@ import style from './home.module.css';
 function Home() {
   return (
     <main className={style["home"]}>
+      <h1 className={style["header"]}>Find your favorite movie!</h1>
+
       <AutocompleteProvider>
         <Autocomplete />
       </AutocompleteProvider>

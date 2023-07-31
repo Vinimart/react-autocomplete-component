@@ -32,9 +32,6 @@
   color: var(--color-neutral-100);
   font-size: 20px;
   font-weight: bold;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .card-movie .info .year,
@@ -42,6 +39,8 @@
   font-size: 14px;
   color: var(--color-neutral-300);
   text-transform: capitalize;
+  position: relative;
+  bottom: 6px;
 }
 
 .card-movie .info .imdb {
@@ -56,4 +55,20 @@
 
 .card-movie .info .imdb:hover {
   filter: brightness(2);
+}
+
+@media screen and (max-width: 600px) {
+  .card-movie .info .title {
+    font-size: 14px;
+  }
+
+  .card-movie .info .year,
+  .card-movie .info .type {
+    font-size: 12px;
+    bottom: 0;
+  }
+
+  .card-movie .info .imdb {
+    font-size: 12px;
+  }
 }

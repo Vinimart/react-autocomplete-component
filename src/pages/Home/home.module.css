@@ -8,6 +8,13 @@
   background-image: linear-gradient(to bottom, #20292f, #2b353f);
 }
 
+.home .header {
+  margin-top: 50px;
+  padding: 0 12px;
+  text-align: center;
+  color: var(--color-neutral-200);
+}
+
 .home .footer {
   position: absolute;
   bottom: 0;
@@ -17,4 +24,10 @@
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media screen and (max-width: 600px) {
+  .home .header {
+    margin-top: 20px;
+  }
 }

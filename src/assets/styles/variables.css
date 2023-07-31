@@ -14,8 +14,6 @@
   --color-accent-150: #153478ac;
   --color-accent-200: #4881fce6;
 
-  --mobile-max: 767px;
-  --tablet-min: 768px;
-  --small-desktop-min: 992px;
-  --large-desktop-min: 1200px;
+  --mobile-breakpoint: 600px;
+  --tablet-breakpoint: 900px;
 }

@@ -1,13 +1,19 @@
+@import "./typography.css";
 @import "./variables.css";
 @import "./reset.css";
 
-html {
+html,
+body {
   background: var(--color-bg-primary-100);
   background-image: linear-gradient(to bottom, #20292f, #2b353f);
 }
 
 h1 {
   color: var(--color-neutral-100);
+  font-family: "Roboto Mono", monospace;
+  font-family: "VT323", monospace;
+  letter-spacing: 1px;
+  font-size: 2.5em;
 }
 
 button {
