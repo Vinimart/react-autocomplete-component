@@ -63,18 +63,6 @@ npm test:unit
 yarn test:unit
 ```
 
-### End-to-End (E2E) Tests
-
-To run end-to-end tests using Cypress, execute the following command:
-
-```bash
-npm run test:e2e
-# or
-yarn test:e2e
-```
-
-Cypress will open and run the E2E tests in your default browser.
-
 ## Storybook (UI Components Showcase & Documentation)
 
 This project uses Storybook to showcase UI components. To run Storybook, use the following command:
