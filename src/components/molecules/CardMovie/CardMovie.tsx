@@ -1,6 +1,8 @@
 import { memo } from 'react';
 
+import { useAutocompleteContext } from '../../../contexts';
 import { imagePlaceholder } from '../../../utils';
+import { Highligh } from '../../atoms';
 import style from './card-movie.module.css';
 
 export interface CardMovieProps {
@@ -12,6 +14,8 @@ export interface CardMovieProps {
 }
 
 function CardMovie({ id, title, type, year, poster }: CardMovieProps) {
+  const { inputValue } = useAutocompleteContext();
+
   return (
     <div className={style["card-movie"]}>
       <div className={style["poster-wrapper"]}>
@@ -24,7 +28,12 @@ function CardMovie({ id, title, type, year, poster }: CardMovieProps) {
       </div>
 
       <div className={style["info"]}>
-        <h3 className={style["title"]}>{title}</h3>
+        <h3 className={style["title"]}>
+          <Highligh
+            inputValue={inputValue}
+            text={title}
+          />
+        </h3>
 
         <div>
           <span className={style["year"]}>{year} - </span>

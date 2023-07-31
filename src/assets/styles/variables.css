@@ -10,6 +10,10 @@
   --color-bg-secondary-100: #384248;
   --color-bg-secondary-150: #353f467e;
 
+  --color-accent-100: #153478;
+  --color-accent-150: #153478ac;
+  --color-accent-200: #4881fce6;
+
   --mobile-max: 767px;
   --tablet-min: 768px;
   --small-desktop-min: 992px;

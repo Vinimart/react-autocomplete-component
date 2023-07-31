@@ -15,7 +15,7 @@
 }
 
 .input-wrapper input:focus {
-  outline-color: #153478ac;
+  outline-color: var(--color-accent-150);
   outline-style: solid;
   outline-width: 2px;
 }
