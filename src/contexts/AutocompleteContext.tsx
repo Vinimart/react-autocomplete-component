@@ -1,52 +1,52 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from 'react'
 
-import type { MoviesAPIResponse } from "../services/moviesApi";
+import type { MoviesAPIResponse } from '../services/moviesApi'
 
 export interface AutocompleteContextDefProps {
-  children: React.ReactNode;
-  defInputValue?: string;
-  defSuggestions?: MoviesAPIResponse["Search"];
+  children: React.ReactNode
+  defInputValue?: string
+  defSuggestions?: MoviesAPIResponse['Search']
 }
 
 export interface AutocompleteContextProps {
-  inputValue: string;
-  suggestions: MoviesAPIResponse["Search"];
-  setInputValue: (inputValue: string) => void;
-  setSuggestions: (suggestions: MoviesAPIResponse["Search"]) => void;
+  inputValue: string
+  suggestions: MoviesAPIResponse['Search']
+  setInputValue: (inputValue: string) => void
+  setSuggestions: (suggestions: MoviesAPIResponse['Search']) => void
 }
 
 const AutocompleteContext = createContext<AutocompleteContextProps>({
-  inputValue: "",
+  inputValue: '',
   suggestions: [],
   setInputValue: () => {},
-  setSuggestions: () => {},
-});
+  setSuggestions: () => {}
+})
 
 export const AutocompleteProvider = ({
   children,
   defSuggestions,
-  defInputValue,
+  defInputValue
 }: AutocompleteContextDefProps) => {
-  const [inputValue, setInputValue] = useState(defInputValue ?? "");
-  const [suggestions, setSuggestions] = useState<MoviesAPIResponse["Search"]>(
-    defSuggestions ?? [],
-  );
+  const [inputValue, setInputValue] = useState(defInputValue ?? '')
+  const [suggestions, setSuggestions] = useState<MoviesAPIResponse['Search']>(
+    defSuggestions ?? []
+  )
 
   const value = useMemo(
     () => ({
       inputValue,
       setInputValue,
       setSuggestions,
-      suggestions,
+      suggestions
     }),
-    [inputValue, setInputValue, setSuggestions, suggestions],
-  );
+    [inputValue, setInputValue, setSuggestions, suggestions]
+  )
 
   return (
     <AutocompleteContext.Provider value={value}>
       {children}
     </AutocompleteContext.Provider>
-  );
-};
+  )
+}
 
-export const useAutocompleteContext = () => useContext(AutocompleteContext);
+export const useAutocompleteContext = () => useContext(AutocompleteContext)

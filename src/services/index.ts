@@ -1,3 +1,3 @@
-import { fetchMoviesData } from "./moviesApi";
+import { fetchMoviesData } from './moviesApi'
 
-export { fetchMoviesData };
+export { fetchMoviesData }

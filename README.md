@@ -1,8 +1,6 @@
-# Deel Autocomplete Assessment
+# React Autocomplete Component
 
 This repository contains a React project built using Vite. It includes an Autocomplete component that allows users to search for movies and get suggestions as they type.
-
-**Assessment Questions** are available [here](./questions.md).
 
 ## Getting Started
 
@@ -11,13 +9,13 @@ To run this project locally, follow these steps:
 1. Clone the private repository to your local machine (**If you have the zip file, you can skip this step**):
 
 ```bash
-git clone https://github.com/Vinimart/deel-autocomplete-assessment.git
+git clone https://github.com/Vinimart/react-autocomplete-component.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd deel-autocomplete-assessment
+cd react-autocomplete-component
 ```
 
 Important: Make sure you have **Node.js** installed, preferably LTS version. If not, you can download it [here](https://nodejs.org/en/download/).

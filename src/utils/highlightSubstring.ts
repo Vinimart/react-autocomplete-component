@@ -1,11 +1,8 @@
 export default function highlightSubstring(
   text: string,
   inputValue: string,
-  style: unknown,
+  style: unknown
 ): string {
-  const regex = new RegExp(inputValue, "gi");
-  return text.replace(
-    regex,
-    (match) => `<span class="${style}">${match}</span>`,
-  );
+  const regex = new RegExp(inputValue, 'gi')
+  return text.replace(regex, match => `<span class="${style}">${match}</span>`)
 }

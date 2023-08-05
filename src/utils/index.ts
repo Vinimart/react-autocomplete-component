@@ -1,4 +1,4 @@
-import highlightSubstring from "./highlightSubstring";
-import imagePlaceholder from "./imagePlaceholder";
+import highlightSubstring from './highlightSubstring'
+import imagePlaceholder from './imagePlaceholder'
 
-export { imagePlaceholder, highlightSubstring };
+export { imagePlaceholder, highlightSubstring }
